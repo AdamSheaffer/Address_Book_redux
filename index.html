@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-US" ng-app="contactApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Address Book</title>
+</head>
+<body>
+  <div class="container" ng-controller="contactController as contactCtrl">
+    <h1>Contacts</h1>
+    <form name="newContactForm" ng-submit="newContactForm.$valid && contactCtrl.addContact()" novalidate>
+      <div class="form-group" ng-class="{'has-error': !contactCtrl.newContact.name}">
+        <label class='control-label'>Name</label>
+        <input class='form-control' type="text" ng-model="contactCtrl.newContact.name" required>
+      </div>
+      <div class="form-group" ng-class="{'has-error': !contactCtrl.newContact.email}">
+        <label class='control-label'>Email</label>
+        <input class='form-control' type="email" ng-model="contactCtrl.newContact.email" required>
+      </div>
+      <div class="form-group" ng-class="{'has-error': !contactCtrl.newContact.phone}">
+        <label class='control-label'>Phone</label>
+        <input class='form-control' type="tel" ng-model="contactCtrl.newContact.phone" required>
+      </div>
+      <div class="form-group">
+        <label class='control-label'>Group</label><select ng-model="contactCtrl.newContact.group">
+          <option value="{{key}}" ng-repeat="(key, value) in contactCtrl.groups">{{value}}</option>
+        </select>
+        <input type="submit" value="Add Contact" ng-show="newContactForm.$valid">
+      </div>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Group</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="contact in contactCtrl.contacts">
+          <td><img class="contact-photo" ng-src="{{contact.img}}"></td>
+          <td>{{contact.name}}</td>
+          <td>{{contact.email}}</td>
+          <td>{{contact.phone}}</td>
+          <td>{{contact.group}}</td>
+          <td><button ng-click="contactCtrl.removeContact(contact)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/angularjs/angular.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

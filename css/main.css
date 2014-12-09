@@ -1,0 +1,13 @@
+.contact-photo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+td, th{
+  padding: 20px;
+}
+
+th {
+  text-align: left;
+}
