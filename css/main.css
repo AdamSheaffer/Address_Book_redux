@@ -11,3 +11,10 @@ td, th{
 th {
   text-align: left;
 }
+
+.details-contact-photo {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin-top: 20px;
+}

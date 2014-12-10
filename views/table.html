@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="(contactId, contact) in contactCtrl.contacts">
+      <td><img class="contact-photo" ng-src="{{contact.img}}"></td>
+      <td>{{contact.name}}</td>
+      <td>{{contact.email}}</td>
+      <td>{{contact.phone}}</td>
+      <td>{{contact.group}}</td>
+      <td>
+        <a class="btn btn-primary" href="/#/{{contactId}}">Details</a>
+      </td>
+      <td>
+        <button class="btn btn-primary" ng-click="contactCtrl.removeContact(contactId)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
