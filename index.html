@@ -42,13 +42,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="contact in contactCtrl.contacts">
+        <tr ng-repeat="(contactId, contact) in contactCtrl.contacts">
           <td><img class="contact-photo" ng-src="{{contact.img}}"></td>
           <td>{{contact.name}}</td>
           <td>{{contact.email}}</td>
           <td>{{contact.phone}}</td>
           <td>{{contact.group}}</td>
-          <td><button ng-click="contactCtrl.removeContact(contact)">Delete</button></td>
+          <td><button ng-click="contactCtrl.removeContact(contactId)">Delete</button></td>
         </tr>
       </tbody>
     </table>
